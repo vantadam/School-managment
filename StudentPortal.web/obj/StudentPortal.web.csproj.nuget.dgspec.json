@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\.netproj\\StudentPortal\\StudentPortal.web\\StudentPortal.web.csproj": {}
+    "D:\\.netproj\\SchoolManagement\\StudentPortal.web\\StudentPortal.web.csproj": {}
   },
   "projects": {
-    "D:\\.netproj\\StudentPortal\\StudentPortal.web\\StudentPortal.web.csproj": {
+    "D:\\.netproj\\SchoolManagement\\StudentPortal.web\\StudentPortal.web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\.netproj\\StudentPortal\\StudentPortal.web\\StudentPortal.web.csproj",
+        "projectUniqueName": "D:\\.netproj\\SchoolManagement\\StudentPortal.web\\StudentPortal.web.csproj",
         "projectName": "StudentPortal.web",
-        "projectPath": "D:\\.netproj\\StudentPortal\\StudentPortal.web\\StudentPortal.web.csproj",
+        "projectPath": "D:\\.netproj\\SchoolManagement\\StudentPortal.web\\StudentPortal.web.csproj",
         "packagesPath": "C:\\Users\\ademz\\.nuget\\packages\\",
-        "outputPath": "D:\\.netproj\\StudentPortal\\StudentPortal.web\\obj\\",
+        "outputPath": "D:\\.netproj\\SchoolManagement\\StudentPortal.web\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ademz\\AppData\\Roaming\\NuGet\\NuGet.Config",

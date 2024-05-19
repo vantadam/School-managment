@@ -28,6 +28,7 @@ namespace StudentPortal.web.Controllers
                 Email = viewModel.Email,
                 Phone = viewModel.Phone,
                 Subscribed = viewModel.Subscribed,
+                Class = viewModel.Class,
             };
             await dbContext.Students.AddAsync(student);
             await dbContext.SaveChangesAsync();
@@ -58,6 +59,7 @@ namespace StudentPortal.web.Controllers
                 student.Email = viewModel.Email;
                 student.Phone = viewModel.Phone;
                 student.Subscribed = viewModel.Subscribed;
+                student.Class = viewModel.Class;
 
                 await dbContext.SaveChangesAsync();
             }

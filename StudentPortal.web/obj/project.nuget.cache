@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QdRW2cHN2C7gH/IxJrFgX9SPSns2u087QHwwuWM2aT/Go0clCHc1KQpxQLH3aKMSesIscnppO4teePoS4vwN5w==",
+  "dgSpecHash": "kM7LsqONbZiwQEdSyE2Nnw7l91ZkMEcCNSyZBdi8fseFLQ7yvxhfAbZBOXBW2CZAdvUb+So9vgRtndQZkg19DA==",
   "success": true,
-  "projectFilePath": "D:\\.netproj\\StudentPortal\\StudentPortal.web\\StudentPortal.web.csproj",
+  "projectFilePath": "D:\\.netproj\\SchoolManagement\\StudentPortal.web\\StudentPortal.web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ademz\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\ademz\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
