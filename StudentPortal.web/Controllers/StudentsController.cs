@@ -27,7 +27,9 @@ namespace StudentPortal.web.Controllers
                 Name = viewModel.Name,
                 Email = viewModel.Email,
                 Phone = viewModel.Phone,
-                Subscribed = viewModel.Subscribed,
+                PresenceCount = 0,
+                AbsenceCount = 0,
+                Average = 0,
                 Class = viewModel.Class,
             };
             await dbContext.Students.AddAsync(student);
@@ -58,7 +60,9 @@ namespace StudentPortal.web.Controllers
                 student.Name = viewModel.Name;
                 student.Email = viewModel.Email;
                 student.Phone = viewModel.Phone;
-                student.Subscribed = viewModel.Subscribed;
+                student.PresenceCount = viewModel.PresenceCount;
+                student.AbsenceCount = viewModel.AbsenceCount;
+                student.Average = viewModel.Average;
                 student.Class = viewModel.Class;
 
                 await dbContext.SaveChangesAsync();

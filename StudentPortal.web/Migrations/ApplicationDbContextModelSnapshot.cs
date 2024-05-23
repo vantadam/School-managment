@@ -28,6 +28,12 @@ namespace StudentPortal.web.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<int>("AbsenceCount")
+                        .HasColumnType("int");
+
+                    b.Property<float>("Average")
+                        .HasColumnType("real");
+
                     b.Property<string>("Class")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -44,8 +50,8 @@ namespace StudentPortal.web.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("Subscribed")
-                        .HasColumnType("bit");
+                    b.Property<int>("PresenceCount")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

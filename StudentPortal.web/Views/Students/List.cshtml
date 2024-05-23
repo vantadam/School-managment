@@ -1,10 +1,4 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-
-@model List<StudentPortal.web.Models.Entities.Student>
+﻿@model List<StudentPortal.web.Models.Entities.Student>
 <h1>Students</h1>
 
 <table class="table">
@@ -14,26 +8,27 @@
             <th>Name</th>
             <th>Email</th>
             <th>Class</th>
-
+            <th>Presence Count</th>
+            <th>Absence Count</th>
+            <th>Average</th>
             <th></th>
-
-
-
-</tr>
+        </tr>
     </thead>
     <tbody>
         @foreach (var student in Model)
         {
-         <tr>
-             <td>@student.Id</td>
-             <td>@student.Name</td>
-             <td>@student.Email</td>
-             <td>@student.Class</td>
-             
-             <td>
-                 <a asp-controller="Students" asp-action="Edit" asp-route-id="@student.Id" class="btn btn-primary">Edit</a>
-             </td>
-         </tr>   
+            <tr>
+                <td>@student.Id</td>
+                <td>@student.Name</td>
+                <td>@student.Email</td>
+                <td>@student.Class</td>
+                <td>@student.PresenceCount</td>
+                <td>@student.AbsenceCount</td>
+                <td>@(student.Average != 0 ? student.Average.ToString("F2") : string.Empty)</td>
+                <td>
+                    <a asp-controller="Students" asp-action="Edit" asp-route-id="@student.Id" class="btn btn-primary">Edit</a>
+                </td>
+            </tr>
         }
     </tbody>
 </table>
