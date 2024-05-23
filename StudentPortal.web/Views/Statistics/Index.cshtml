@@ -1,0 +1,113 @@
+﻿@{
+    ViewData["Title"] = "Statistics";
+    var groupedByClass = ViewBag.GroupedByClass;
+    var overallStats = ViewBag.OverallStats;
+    var passingFailingCounts = ViewBag.PassingFailingCounts;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+        }
+
+            .stat h2 {
+                margin-top: 0;
+                font-size: 24px;
+                color: #333;
+            }
+
+            .stat p {
+                margin: 5px 0;
+                font-size: 16px;
+            }
+
+                .stat p strong {
+                    font-weight: bold;
+                    color: #555;
+                }
+
+     
+        .bar-container {
+            margin-top: 10px;
+            height: 20px;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .bar {
+            height: 100%;
+            background-color: #4CAF50;
+            text-align: center;
+            line-height: 20px;
+            color: white;
+            transition: width 0.6s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="stat">
+            <h2>Class-wise Statistics</h2>
+            <div id="classStats">
+                @foreach (var item in groupedByClass)
+                {
+                    <p><strong>@item.Class:</strong> Presence: @item.AveragePresence%, Absence: @item.AverageAbsence%, Grade: @item.AverageGrade</p>
+                    <div class="bar-container">
+                        <div class="bar" style="width: @(item.AveragePresence)%;"></div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="stat">
+            <h2>Overall Statistics</h2>
+            <div id="overallStats">
+                <p><strong>Average Presence:</strong> @overallStats.AveragePresence%</p>
+                <p><strong>Average Absence:</strong> @overallStats.AverageAbsence%</p>
+                <p><strong>Average Grade:</strong> @overallStats.AverageGrade</p>
+                <div class="bar-container">
+                    <div class="bar" style="width: @(overallStats.AveragePresence)%;"></div>
+                    <div class="bar" style="width: @(overallStats.AverageAbsence)%;"></div>
+                    <div class="bar" style="width:  @(overallStats.AverageGrade)%;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="stat">
+            <h2>Passing vs. Failing Students</h2>
+            <div id="passFailStats">
+                <p><strong>Passing Count:</strong> @passingFailingCounts.PassingCount</p>
+                <p><strong>Failing Count:</strong> @passingFailingCounts.FailingCount</p>
+                <div class="bar-container">
+                    <div class="bar" style="width: @(passingFailingCounts.PassingCount / (passingFailingCounts.PassingCount + passingFailingCounts.FailingCount) * 100)%;"></div>
+                    <div class="bar" style="width: @(passingFailingCounts.FailingCount / (passingFailingCounts.PassingCount + passingFailingCounts.FailingCount) * 100)%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

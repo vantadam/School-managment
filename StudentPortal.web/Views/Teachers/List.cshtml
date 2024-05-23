@@ -4,7 +4,12 @@
 @{
 }
 @model List<StudentPortal.web.Models.Entities.Teacher>
-<h1>Teachers</h1>
+<div style="display:flex; justify-content:space-between ; align-items:center">
+    <h1>Teachers</h1>
+    <div style="height:10px; display:flex; align-items:center; justify-content:center">
+        <a asp-controller="Teachers" asp-action="Add" class="btn btn-outline-primary">   +   </a>
+    </div>
+</div>
 
 <table class="table">
     <thead>

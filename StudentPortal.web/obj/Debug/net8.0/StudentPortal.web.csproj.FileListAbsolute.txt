@@ -271,3 +271,5 @@ D:\.netproj\SchoolManagement\StudentPortal.web\obj\Debug\net8.0\refint\StudentPo
 D:\.netproj\SchoolManagement\StudentPortal.web\obj\Debug\net8.0\StudentPortal.web.pdb
 D:\.netproj\SchoolManagement\StudentPortal.web\obj\Debug\net8.0\StudentPortal.web.genruntimeconfig.cache
 D:\.netproj\SchoolManagement\StudentPortal.web\obj\Debug\net8.0\ref\StudentPortal.web.dll
+D:\.netproj\SchoolManagement\StudentPortal.web\bin\Debug\net8.0\package-lock.json
+D:\.netproj\SchoolManagement\StudentPortal.web\bin\Debug\net8.0\package.json
