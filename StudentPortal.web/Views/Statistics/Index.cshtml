@@ -12,7 +12,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewData["Title"]</title>
     <style>
-        
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -51,22 +50,33 @@
                     color: #555;
                 }
 
-     
         .bar-container {
             margin-top: 10px;
             height: 20px;
             background-color: #f2f2f2;
             border-radius: 5px;
             overflow: hidden;
+            margin-bottom: 10px;
         }
 
         .bar {
             height: 100%;
-            background-color: #4CAF50;
             text-align: center;
             line-height: 20px;
             color: white;
             transition: width 0.6s ease;
+        }
+
+        .presence-bar {
+            background-color: #4CAF50;
+        }
+
+        .absence-bar {
+            background-color: #FF6347;
+        }
+
+        .passing-bar {
+            background-color: #4CAF50;
         }
     </style>
 </head>
@@ -77,34 +87,52 @@
             <div id="classStats">
                 @foreach (var item in groupedByClass)
                 {
-                    <p><strong>@item.Class:</strong> Presence: @item.AveragePresence%, Absence: @item.AverageAbsence%, Grade: @item.AverageGrade</p>
+                    var total = item.AveragePresence + item.AverageAbsence;
+                    var presencePercentage = total > 0 ? Math.Ceiling((item.AveragePresence / total) * 100) : 0;
+                    var absencePercentage = total > 0 ? Math.Ceiling((item.AverageAbsence / total) * 100) : 0;
+                    var displayPresencePercentage = total > 0 ? (item.AveragePresence / total) * 100 : 0;
+                    var displayAbsencePercentage = total > 0 ? (item.AverageAbsence / total) * 100 : 0;
+
+                    <p><strong>@item.Class:</strong></p>
                     <div class="bar-container">
-                        <div class="bar" style="width: @(item.AveragePresence)%;"></div>
+                        <div class="bar presence-bar" style="width:@presencePercentage%;">Presence: @displayPresencePercentage.ToString("0.00")%</div>
                     </div>
+                   
+                    <p><strong>Average Grade:</strong> @item.AverageGrade</p>
                 }
             </div>
         </div>
         <div class="stat">
             <h2>Overall Statistics</h2>
             <div id="overallStats">
-                <p><strong>Average Presence:</strong> @overallStats.AveragePresence%</p>
-                <p><strong>Average Absence:</strong> @overallStats.AverageAbsence%</p>
-                <p><strong>Average Grade:</strong> @overallStats.AverageGrade</p>
+                @{
+                    var totalOverall = overallStats.AveragePresence + overallStats.AverageAbsence;
+                    var overallPresencePercentage = totalOverall > 0 ? Math.Ceiling((overallStats.AveragePresence / totalOverall) * 100) : 0;
+                    var overallAbsencePercentage = totalOverall > 0 ? Math.Ceiling((overallStats.AverageAbsence / totalOverall) * 100) : 0;
+                    var displayOverallPresencePercentage = totalOverall > 0 ? (overallStats.AveragePresence / totalOverall) * 100 : 0;
+                    var displayOverallAbsencePercentage = totalOverall > 0 ? (overallStats.AverageAbsence / totalOverall) * 100 : 0;
+                }
+
+                <p><strong>Average Presence:</strong></p>
                 <div class="bar-container">
-                    <div class="bar" style="width: @(overallStats.AveragePresence)%;"></div>
-                    <div class="bar" style="width: @(overallStats.AverageAbsence)%;"></div>
-                    <div class="bar" style="width:  @(overallStats.AverageGrade)%;"></div>
+                    <div class="bar presence-bar" style="width:@overallPresencePercentage%;">@displayOverallPresencePercentage.ToString("0.00")%</div>
                 </div>
+                
+                <p><strong>Average Grade:</strong> @overallStats.AverageGrade</p>
             </div>
         </div>
         <div class="stat">
             <h2>Passing vs. Failing Students</h2>
             <div id="passFailStats">
-                <p><strong>Passing Count:</strong> @passingFailingCounts.PassingCount</p>
-                <p><strong>Failing Count:</strong> @passingFailingCounts.FailingCount</p>
+                @{
+                    var totalStudents = passingFailingCounts.PassingCount + passingFailingCounts.FailingCount;
+                    var passingPercentage = totalStudents > 0 ? Math.Ceiling((passingFailingCounts.PassingCount / (float)totalStudents) * 100) : 0;
+                    var displayPassingPercentage = totalStudents > 0 ? (passingFailingCounts.PassingCount / (float)totalStudents) * 100 : 0;
+                }
+
+                <p><strong>Passing Count:</strong></p>
                 <div class="bar-container">
-                    <div class="bar" style="width: @(passingFailingCounts.PassingCount / (passingFailingCounts.PassingCount + passingFailingCounts.FailingCount) * 100)%;"></div>
-                    <div class="bar" style="width: @(passingFailingCounts.FailingCount / (passingFailingCounts.PassingCount + passingFailingCounts.FailingCount) * 100)%;"></div>
+                    <div class="bar passing-bar" style="width:@passingPercentage%;">@passingFailingCounts.PassingCount/@passingFailingCounts.FailingCount (@displayPassingPercentage.ToString("0.00")%)</div>
                 </div>
             </div>
         </div>

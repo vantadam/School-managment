@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using StudentPortal.web.Data;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace StudentPortal.web.Controllers
 {
